@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import styles from "./style";
-import {Keyboard, Text, View, TextInput, TouchableWithoutFeedback, Alert, KeyboardAvoidingView, SectionList} from 'react-native';
+import {Keyboard, Text, View, TextInput, Image, TouchableWithoutFeedback, Alert, KeyboardAvoidingView, SectionList} from 'react-native';
 import { Button } from 'react-native-elements';
 
 import ProductsScreen from './products'
@@ -16,8 +16,8 @@ export default class ForgottenScreen extends Component {
       <KeyboardAvoidingView style={styles.containerView} behavior="padding">
 
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <View style={styles.loginScreenContainer}>
-          <View style={styles.loginFormView}>
+        <View>
+          <View>
             <SectionList
               sections={[
                 {title: 'Corporate', data: ['Product 1','Product 2', 'Product 3','Product 4']},

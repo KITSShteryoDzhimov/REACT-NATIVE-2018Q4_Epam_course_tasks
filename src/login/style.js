@@ -6,17 +6,41 @@ export default {
 
 containerView: {
   flex: 1,
+
 },
 loginScreenContainer: {
   flex: 1,
   justifyContent: 'space-between',
 },
+productDetailsButton: {
+
+},
+productLabelText: {
+  fontSize: 28,
+  fontWeight: "800",
+  marginTop:  40,
+  textAlign: 'left',
+},
+productDescriptionText: {
+  marginLeft: 40,
+  marginRight: 70,
+  marginTop:  40,
+},
+containerProductDetails: {
+  flexDirection: 'row',
+  justifyContent: 'flex-start',
+  alignContent: 'center',
+  alignItems: 'flex-end',
+},
 welcomeImage: {
-  width: 300,
-  height: 300,
+  width: 50,
+  height: 50,
+    marginLeft: 10,
+    marginTop:  10,
   resizeMode: 'contain',
-  marginTop: 30,
-  marginLeft: 30,
+  flexDirection: 'row',
+  justifyContent: 'flex-start',
+
 },
 logoText: {
   fontSize: 28,

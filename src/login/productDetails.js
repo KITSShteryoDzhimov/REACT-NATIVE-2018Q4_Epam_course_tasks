@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import styles from "./style";
-import {Keyboard, Text, View, TextInput, TouchableWithoutFeedback, Alert, KeyboardAvoidingView} from 'react-native';
+import {Keyboard, Text, View, TextInput, Image, TouchableWithoutFeedback, Alert, KeyboardAvoidingView} from 'react-native';
 import { Button } from 'react-native-elements';
 
 import ProductsScreen from './products'
@@ -12,9 +12,20 @@ export default class ForgottenScreen extends Component {
     const { navigate } = this.props.navigation;
     return (
       <KeyboardAvoidingView style={styles.containerView} behavior="padding">
-        <View style={styles.loginScreenContainer}>
-          <View style={styles.loginFormView}>
+          <View style={styles.containerProductDetails}>
+            <Image
+              style={styles.welcomeImage}
+              label="Products Catalog Smile"
+              source={{uri: 'https://i.pinimg.com/originals/af/d8/cc/afd8cc206a772cde7e79eaaaa4596948.png'}}
+            />
             <Text style={styles.productLabelText}>Product 1 </Text>
+          </View>
+          <View>
+            <Text style={styles.productDescriptionText}>
+            Lorem ipsum dolor sit amet, ea vis natum debet nobis. Est at populo labore principes, quo no choro legere.
+            Sed novum mazim dolor ad, te ullum sonet maluisset mel. Pri eu sanctus utroque euripidis, id novum denique
+            sit, congue cetero utamur qui eu. Cum agam eros maiorum id. Ut modus reque malis est, veri graeci ea usu.
+            </Text>
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                 <Button
                   buttonStyle={styles.loginButton}
@@ -24,7 +35,6 @@ export default class ForgottenScreen extends Component {
                   title="All Products"
                 />
              </TouchableWithoutFeedback>
-          </View>
         </View>
       </KeyboardAvoidingView>
     );

@@ -17,6 +17,11 @@ export default class LoginScreen extends Component {
       <KeyboardAvoidingView style={styles.containerView} behavior="padding">
         <View style={styles.loginScreenContainer}>
           <View style={styles.loginFormView}>
+            <Image
+              style={styles.welcomeImage}
+              label="Products Catalog Smile"
+              source={{uri: 'https://i.pinimg.com/originals/af/d8/cc/afd8cc206a772cde7e79eaaaa4596948.png'}}
+            />
             <Text style={styles.logoText}>Friday's shop</Text>
             <TextInput placeholder="me@abv.bg" placeholderColor="#76cdd8" style={styles.loginFormTextInput} />
             <TextInput placeholder="Password" placeholderColor="#76cdd8" style={styles.loginFormTextInput} secureTextEntry={true}/>
