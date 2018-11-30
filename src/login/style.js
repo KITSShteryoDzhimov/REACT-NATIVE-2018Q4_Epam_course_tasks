@@ -10,7 +10,7 @@ containerView: {
 },
 loginScreenContainer: {
   flex: 1,
-  justifyContent: 'space-between',
+  justifyContent: 'center',
 },
 productDetailsButton: {
 
@@ -44,11 +44,12 @@ welcomeImage: {
   flexDirection: 'row',
 },
 logoText: {
-  fontSize: 28,
+  fontSize: 48,
   fontWeight: "800",
   marginTop:  30,
   marginBottom: 35,
   textAlign: 'center',
+  fontFamily: 'cylburn',
 },
 userLabelText: {
   fontSize: 14,

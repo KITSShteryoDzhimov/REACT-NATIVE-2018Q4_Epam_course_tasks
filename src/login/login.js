@@ -8,12 +8,22 @@ import { Font } from 'expo';
 import ForgottenScreen from './forgotten'
 import EulaScreen from './products'
 
-
 export default class LoginScreen extends Component {
+ state = {
+    currentIndex: 0,
+    fontsLoaded: false,
+  };
+  async componentWillMount()   {
+        await Font.loadAsync({
+          'cylburn': require('../../assets/fonts/Cylburn.ttf'),
+       });
 
+      this.setState({ fontsLoaded: true });
+  };
   render() {
     const { navigate } = this.props.navigation;
-    return (
+    return this.state.fontsLoaded ?
+    (
       <KeyboardAvoidingView style={styles.containerView} behavior="padding">
         <View style={styles.loginScreenContainer}>
           <View style={styles.loginFormView}>
@@ -24,7 +34,9 @@ export default class LoginScreen extends Component {
                   source={{uri: 'https://i.pinimg.com/originals/af/d8/cc/afd8cc206a772cde7e79eaaaa4596948.png'}}
                 />
             </View>
-            <Text style={styles.logoText}>Friday's shop</Text>
+            <View style={styles.welcomeImageView}>
+                <Text style={{fontFamily: "cylburn", fontSize: 56 }}>Friday's shop</Text>
+            </View>
             <TextInput placeholder="me@abv.bg" placeholderColor="#76cdd8" style={styles.loginFormTextInput} />
             <TextInput placeholder="Password" placeholderColor="#76cdd8" style={styles.loginFormTextInput} secureTextEntry={true}/>
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -49,10 +61,7 @@ export default class LoginScreen extends Component {
           </View>
         </View>
       </KeyboardAvoidingView>
-    );
-  }
-
-  componentDidMount() {
+    ) : null;
   }
 
   componentWillUnmount() {
