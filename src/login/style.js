@@ -32,21 +32,22 @@ containerProductDetails: {
   alignContent: 'center',
   alignItems: 'flex-end',
 },
+welcomeImageView: {
+  flexDirection: 'row',
+  alignSelf: 'center',
+},
 welcomeImage: {
   width: 50,
   height: 50,
-    marginLeft: 10,
-    marginTop:  10,
+  marginTop:  20,
   resizeMode: 'contain',
   flexDirection: 'row',
-  justifyContent: 'flex-start',
-
 },
 logoText: {
   fontSize: 28,
   fontWeight: "800",
-  marginTop:  40,
-  marginBottom: 55,
+  marginTop:  30,
+  marginBottom: 35,
   textAlign: 'center',
 },
 userLabelText: {
@@ -69,7 +70,7 @@ loginFormTextInput: {
   paddingLeft: 10,
   marginLeft: 45,
   marginRight: 45,
-  marginTop: 5,
+  marginTop: 10,
   marginBottom: 5,
   justifyContent: 'center',
 },
