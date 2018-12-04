@@ -6,31 +6,38 @@ export default {
 
 containerView: {
   flex: 1,
-
 },
 loginScreenContainer: {
   flex: 1,
   justifyContent: 'center',
 },
-productDetailsButton: {
-
-},
 productLabelText: {
-  fontSize: 28,
-  fontWeight: "800",
-  marginTop:  40,
+
   textAlign: 'left',
+  fontFamily: "cylburn",
+  fontSize: 46,
 },
 productDescriptionText: {
   marginLeft: 40,
   marginRight: 70,
-  marginTop:  40,
+  textAlign: 'left',
+  fontFamily: "cylburn",
+  fontSize: 30,
+},
+containerProductsProductDetails: {
+  flexDirection: 'row',
+  justifyContent: 'flex-start',
+  alignContent: 'center',
+  alignItems: 'flex-end',
 },
 containerProductDetails: {
   flexDirection: 'row',
   justifyContent: 'flex-start',
   alignContent: 'center',
   alignItems: 'flex-end',
+  marginTop: 20,
+  marginBottom: 40,
+  marginLeft: 20,
 },
 welcomeImageView: {
   flexDirection: 'row',
@@ -43,13 +50,18 @@ welcomeImage: {
   resizeMode: 'contain',
   flexDirection: 'row',
 },
-logoText: {
-  fontSize: 48,
-  fontWeight: "800",
-  marginTop:  30,
-  marginBottom: 35,
-  textAlign: 'center',
-  fontFamily: 'cylburn',
+productImageProductDetails: {
+  width: 65,
+  height: 65,
+  marginRight: 20,
+  resizeMode: 'contain',
+  flexDirection: 'row',
+},
+productImageProductsScreen: {
+  width: 55,
+  height: 55,
+  marginRight: 50,
+  resizeMode: 'contain',
 },
 userLabelText: {
   fontSize: 14,
@@ -86,12 +98,11 @@ forgotButton: {
   marginTop: 10,
   backgroundColor: 'transparent',
 },
-tcText: {
-  fontSize: 13,
-  fontWeight: "400",
-  marginTop:  30,
-  marginBottom: 15,
-  textAlign: 'left',
+allProductsButton: {
+  backgroundColor: '#76cdd8',
+  borderRadius: 5,
+  height: 45,
+  width: 160,
 },
 sectionHeader: {
     paddingTop: 2,
@@ -101,10 +112,11 @@ sectionHeader: {
     fontSize: 14,
     fontWeight: 'bold',
     backgroundColor: 'rgba(247,247,247,1.0)',
-  },
+},
 item: {
-  padding: 10,
-  fontSize: 18,
-  height: 44,
+  padding: 12,
+  fontFamily: "cylburn",
+  fontSize: 32,
+  height: 50,
 },
 };

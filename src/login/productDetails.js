@@ -13,29 +13,36 @@ export default class ForgottenScreen extends Component {
     return (
       <KeyboardAvoidingView style={styles.containerView} behavior="padding">
           <View style={styles.containerProductDetails}>
-            <Image
-              style={styles.welcomeImage}
-              label="Products Catalog Smile"
-              source={{uri: 'https://i.pinimg.com/originals/af/d8/cc/afd8cc206a772cde7e79eaaaa4596948.png'}}
-            />
-            <Text style={styles.productLabelText}>Product 1 </Text>
+           <View>
+                <Image
+                  style={styles.productImageProductDetails}
+                  label="Products Catalog Smile"
+                  source={require('../../assets/icons/IndustrySolutions__Software_Tech_blue.png')}
+                />
+           </View>
+           <View>
+            <Text style={styles.productLabelText}>Product 1</Text>
+           </View>
           </View>
           <View>
             <Text style={styles.productDescriptionText}>
-            Lorem ipsum dolor sit amet, ea vis natum debet nobis. Est at populo labore principes, quo no choro legere.
+            &nbsp;&nbsp;&nbsp;Lorem ipsum dolor sit amet, ea vis natum debet nobis. Est at populo labore principes, quo no choro legere.
             Sed novum mazim dolor ad, te ullum sonet maluisset mel. Pri eu sanctus utroque euripidis, id novum denique
             sit, congue cetero utamur qui eu. Cum agam eros maiorum id. Ut modus reque malis est, veri graeci ea usu.
             </Text>
+          </View>
+          <View style={styles.containerProductDetails}>
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                 <Button
-                  buttonStyle={styles.loginButton}
+                  buttonStyle={styles.allProductsButton}
+                  textStyle={{fontFamily: "cylburn", fontSize: 36 }}
                   onPress={() =>
                     navigate('ProductsScreen', { name: 'products' })
                   }
                   title="All Products"
                 />
              </TouchableWithoutFeedback>
-        </View>
+          </View>
       </KeyboardAvoidingView>
     );
   }

@@ -65,9 +65,6 @@ export default class LoginScreen extends Component {
       </KeyboardAvoidingView>
     ) : null;
   }
-
-  componentWillUnmount() {
-  }
-
 }
+
 
