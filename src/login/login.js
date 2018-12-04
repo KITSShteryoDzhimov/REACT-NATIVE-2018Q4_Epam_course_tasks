@@ -42,6 +42,7 @@ export default class LoginScreen extends Component {
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                 <Button
                   buttonStyle={styles.loginButton}
+                  textStyle={{fontFamily: "cylburn", fontSize: 28 }}
                   onPress={() =>
                     navigate('ProductsScreen', { name: 'products' })
                   }
@@ -51,6 +52,7 @@ export default class LoginScreen extends Component {
              <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                 <Button
                   buttonStyle={styles.forgotButton}
+                  textStyle={{fontFamily: "cylburn", fontSize: 28 }}
                   title="Forgotten Password"
                   onPress={() =>
                     navigate('ForgottenScreen', { name: 'Forget me not!' })
