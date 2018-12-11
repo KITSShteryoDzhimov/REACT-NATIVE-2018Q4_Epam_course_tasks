@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import styles from "./Login.Styles";
-import {Keyboard, Text, View, TextInput, Image, TouchableWithoutFeedback, Alert, KeyboardAvoidingView, ActivityIndicator} from 'react-native';
+import {Keyboard, Text, View, TextInput, Image, TouchableWithoutFeedback, ActivityIndicator} from 'react-native';
 import { Button } from 'react-native-elements';
 import { Font } from 'expo';
 
