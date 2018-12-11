@@ -1,48 +1,49 @@
 import React, { Component } from "react";
 
-import styles from "./style";
+import styles from "./Products.Styles";
 import {Keyboard, Text, View, TextInput, Image, TouchableWithoutFeedback, Alert, KeyboardAvoidingView, SectionList} from 'react-native';
 import { Button } from 'react-native-elements';
 
-import ProductsScreen from './products'
-
-export default class ForgottenScreen extends Component {
-  static navigationOptions = {
+export default class Products extends Component {
+  static navigationOptions = ({navigation,screenProps}) =>({
     title: 'Products',
-  };
+  });
   render() {
     const { navigate } = this.props.navigation;
+    const loggedUser = this.props.navigation.state.params.user;
     return (
-      <KeyboardAvoidingView style={styles.containerView} behavior="padding">
+      <KeyboardAvoidingView style={styles.listView} behavior="padding">
 
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View>
           <View>
+            <Text>You've been logged as user: {JSON.stringify(loggedUser)}</Text>
+            <Text>Please select your product:</Text>
             <SectionList
               sections={[
                 {title: 'Corporate', data: [
                 [<Image
                   style={styles.productImageProductsScreen}
                   label="Industry product"
-                  source={require('../../assets/icons/IndustrySolutions__Software_Tech_blue.png')}
+                  source={require('../../assets/images/icons8-product-80.png')}
                 />,
                 'Product 1'],
                 [<Image
                   style={styles.productImageProductsScreen}
                   label="Retail product"
-                  source={require('../../assets/icons/IndustrySolutions__Retail_blue.png')}
+                  source={require('../../assets/images/icons8-product-80.png')}
                 />,
                 'Product 2'],
                 [<Image
                   style={styles.productImageProductsScreen}
                   label="Energy product"
-                  source={require('../../assets/icons/IndustrySolutions__Energy_blue.png')}
+                  source={require('../../assets/images/icons8-product-80.png')}
                 />,
                 'Product 3'],
                 [<Image
                   style={styles.productImageProductsScreen}
                   label="Search product"
-                  source={require('../../assets/icons/EPAM_values_customer_focus_blue_Partner.png')}
+                  source={require('../../assets/images/icons8-product-80.png')}
                 />,
                 'Product 4']
                 ]},
@@ -50,35 +51,35 @@ export default class ForgottenScreen extends Component {
                 [<Image
                   style={styles.productImageProductsScreen}
                   label="Products Catalog Smile"
-                  source={require('../../assets/icons/DigitalEngagement_Mobility_blue.png')}
+                  source={require('../../assets/images/icons8-product-80.png')}
                 />,
                 'Product 5'],
                 [<Image
                   style={styles.productImageProductsScreen}
                   label="Products Catalog Smile"
-                  source={require('../../assets/icons/DigitalEngagement_Product_Design_blue.png')}
+                  source={require('../../assets/images/icons8-product-80.png')}
                 />,
                 'Product 6'],
                 [<Image
                   style={styles.productImageProductsScreen}
                   label="Products Catalog Smile"
-                  source={require('../../assets/icons/DigitalEngagement_Commerce_blue.png')}
+                  source={require('../../assets/images/icons8-product-80.png')}
                 />,
                 'Product 7'],
                 [<Image
                   style={styles.productImageProductsScreen}
                   label="Products Catalog Smile"
-                  source={require('../../assets/icons/Social_Blue__Instagram.png')}
+                  source={require('../../assets/images/icons8-product-80.png')}
                 />,
                 'Product 8']]},
               ]}
-              renderItem={({item}) =>
-                  <Text style={styles.item}
+              renderItem={({item, index, section}) =>
+                  <Text style={styles.item} key={index}
                   onPress={() =>
-                    navigate('ProductDetailsScreen', { name: 'product details' })
+                    navigate('ProductDetailsScreen', { pageName: 'Product Details',  productName: 'Product 1' })
                   }>{item}</Text>}
               renderSectionHeader={({section}) => <Text style={styles.sectionHeader}>{section.title}</Text>}
-              keyExtractor={(item, index) => index}
+              keyExtractor={(item, index) => item + index}
             />
           </View>
         </View>

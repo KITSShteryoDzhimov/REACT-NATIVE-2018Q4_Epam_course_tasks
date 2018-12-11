@@ -1,19 +1,26 @@
 {
   "expo": {
     "android": {
-      "package": "io.epam.shop"
+      "package": "com.epam.fridayshop"
     },
-    "name": "Friday's Shop",
+    "ios": {
+      "bundleIdentifier": "com.epam.fridayshop",
+      "supportsTablet": true
+    },
+    "name": "FridayProductsShop",
     "description": "Friday's Shop Login and Navigation",
-    "slug": "login-screen",
+    "slug": "friday-shop",
     "privacy": "public",
-    "sdkVersion": "26.0.0",
-    "platforms": ["ios", "android"],
-    "version": "1.0.0",
+    "sdkVersion": "31.0.0",
+    "platforms": [
+      "ios",
+      "android"
+    ],
+    "version": "0.0.2",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./src/assets/images/icon.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./src/assets/images/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -23,8 +30,6 @@
     "assetBundlePatterns": [
       "**/*"
     ],
-    "ios": {
-      "supportsTablet": true
-    }
+    "githubUrl": "https://github.com/KITSShteryoDzhimov/REACT-NATIVE-2018Q4_Epam_course_tasks/"
   }
 }
