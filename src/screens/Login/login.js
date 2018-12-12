@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import styles from "./Login.Styles";
-import {Keyboard, Text, View, TextInput, Image, TouchableWithoutFeedback, ActivityIndicator} from 'react-native';
+import {Keyboard, Text, View, TextInput, Image, TouchableWithoutFeedback, TouchableHighlight, ActivityIndicator, Modal, Alert} from 'react-native';
 import { Button } from 'react-native-elements';
 import { Font } from 'expo';
 
@@ -12,8 +12,14 @@ export default class LoginScreen extends Component {
     username: '',
     password: '',
     isLoggingIn: false,
-    message: ''
+    message: '',
+    modalVisible: false,
   };
+
+  setModalVisible(visible) {
+    this.setState({modalVisible: visible});
+  }
+
   async componentWillMount()   {
         await Font.loadAsync({
           'cylburn': require('../../assets/fonts/Cylburn.ttf'),
@@ -46,8 +52,8 @@ export default class LoginScreen extends Component {
            }
            const error = await result.json();
            throw new Error(error.message);
-      } catch(err) {
-          this.setState({ message: err.message });
+      } catch(error) {
+          this.setState({ message: error.message });
           this.setState({ isLoggingIn: false })
       }
   }
@@ -93,14 +99,49 @@ export default class LoginScreen extends Component {
                     placeholderColor="#76cdd8"
                     style={styles.loginFormTextInput}
                     secureTextEntry={true}/>
-				{!!this.state.message && (
-					<Text
-						style={{fontSize: 14, color: 'red', padding: 5}}>
-						{this.state.message}
-					</Text>
-				)}
-				{this.state.isLoggingIn && <ActivityIndicator />}
-             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+			{!!this.state.message && (
+
+                <View style={styles.containerView}>
+                    <Modal
+                    animationType="slide"
+                    transparent={false}
+                    visible={this.state.modalVisible}
+                    onRequestClose={() => {
+                        Alert.alert('Modal will be closed.');
+                    }}>
+                        <View style={styles.modalContainer}>
+                            <Text style={fontSize=30}>Welcome, {this.state.username}!</Text>
+                            <Text style={fontSize=30}>There is network issue in the moment!</Text> 
+                            <Text style={fontSize=30}>Please try again later.</Text>
+                        </View>                               
+                        <View style={styles.modalButtonContainer}>
+                            <TouchableHighlight>
+                                <Button
+                                    disabled={this.state.isLoggingIn||!this.state.username||!this.state.password}
+                                    buttonStyle={styles.modalButtonText}
+                                    onPress={() => {
+                                        this.setModalVisible(!this.state.modalVisible);
+                                    }}
+                                    title="Close"
+                                />
+                            </TouchableHighlight>
+                        </View>
+                    </Modal>
+
+                    <TouchableHighlight
+                        onPress={() => {
+                            this.setModalVisible(true);
+                        }}>
+                        <Text
+                            style={{fontSize: 14, color: 'red', padding: 5}}>
+                            {this.state.message}. Press to see reason.
+                        </Text>
+                    </TouchableHighlight>
+                </View>                                         
+			)}
+            {this.state.isLoggingIn && <ActivityIndicator />}
+             
+            <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                  <Button
 				   disabled={this.state.isLoggingIn||!this.state.username||!this.state.password}
                    buttonStyle={styles.loginButton}
@@ -113,8 +154,8 @@ export default class LoginScreen extends Component {
                         })
                    }}
                    title="Login"
-                 />
-              </TouchableWithoutFeedback>
+                />
+            </TouchableWithoutFeedback>
           </View>
           <View style={ styles.footer } />
        </View>

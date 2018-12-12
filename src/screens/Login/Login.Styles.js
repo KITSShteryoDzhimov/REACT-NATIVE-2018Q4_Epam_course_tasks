@@ -51,6 +51,19 @@ const styles = StyleSheet.create({
     footer: {
         flex: 13
     },
+    modalContainer: {
+        flex: 1,
+        padding: 20,      
+    },
+    modalButtonContainer: {
+        flex: 2,
+        alignItems: 'flex-end'
+    },
+    modalButtonText: {
+        marginHorizontal: '5%',
+        backgroundColor: Colors.EpamBlue,
+        borderRadius: 5,      
+    },
 });
 
 export default styles;
