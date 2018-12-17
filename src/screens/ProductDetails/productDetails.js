@@ -3,13 +3,12 @@ import React, { Component } from "react";
 import styles from './ProductDetails.Styles';
 import {Keyboard, Text, View, Image, TouchableWithoutFeedback, KeyboardAvoidingView} from 'react-native';
 import { Button } from 'react-native-elements';
-
-import ProductsScreen from '../Products/products'
-
+ 
 export default class ProductDetailsScreen extends Component {
-  static navigationOptions = ({navigation,screenProps}) =>({
+  static navigationOptions = ({navigation}) =>({
     title: navigation.getParam('productName','Product')
   });
+    
   render() {
     const { navigate } = this.props.navigation;
     const productName = this.props.navigation.state.params.productName;
@@ -19,20 +18,32 @@ export default class ProductDetailsScreen extends Component {
            <View style={ styles.header } />
            <View style={ styles.body }>
              <View style={ styles.caption }>
-                 <View style={ styles.captionImageContainer }>
+                  <View style={ styles.captionImageContainer }>
                         <Image
                           style={styles.captionImage}
-                          label="Products Catalog Smile"
+                          label="Product Icon"
                           source={require('../../assets/images/icons8-product-80.png')}
                         />
-                   </View>
-                   <View style={ styles.captionTextContainer }>
+                  </View>
+                  <View style={ styles.captionTextContainer }>
                     <Text style={styles.captionText}>{productName}</Text>
-                   </View>
+                  </View>
+                  <View style={ styles.mapImageContainer }>
+                    <TouchableWithoutFeedback 
+                      onPress={() =>
+                        navigate('MapScreen', { productName: productName })
+                      }>
+                        <Image
+                          style={styles.mapImage}
+                          label="Map Pin Icon"
+                          source={require('../../assets/images/noun_Location_102538.png')} 
+                        />
+                    </TouchableWithoutFeedback>
+                  </View>
               </View>
               <View style={ styles.descriptionContainer }>
                 <Text style={ styles.description } numberOfLines={ 6 } ellipsizeMode='tail'>{'\t'}
-                  {productDescription}
+                    {productDescription}
                 </Text>
               </View>
               <View style={styles.buttonContainer}>

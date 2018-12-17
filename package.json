@@ -6,6 +6,10 @@
     "react": "^16.6.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-31.0.0.tar.gz",
     "react-native-elements": "^0.19.1",
+    "react-native-geocoding": "^0.3.0",
+    "react-native-map-clustering": "^1.3.0",
+    "react-native-maps": "^0.22.1",
+    "react-native-phone-call": "^1.0.9",
     "react-navigation": "^3.0.1"
   },
   "devDependencies": {

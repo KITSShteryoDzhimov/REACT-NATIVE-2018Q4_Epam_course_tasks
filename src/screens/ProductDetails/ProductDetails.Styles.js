@@ -69,7 +69,17 @@ const styles = StyleSheet.create({
     footer: {
         flex: 5
     },
-
+    mapImageContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    mapImage: {
+        flex: 1,
+        resizeMode: 'contain',
+        width: '80%',
+        height: '80%'
+    },    
 });
 
 export default styles;
