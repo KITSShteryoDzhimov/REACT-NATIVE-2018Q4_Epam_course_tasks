@@ -53,8 +53,8 @@ export default class LoginScreen extends Component {
            const error = await result.json();
            throw new Error(error.message);
       } catch(error) {
-          this.setState({ message: error.message });
-          this.setState({ isLoggingIn: false })
+          this.setState({ message: error.message, isLoggingIn: false });
+          this.setModalVisible(true)
       }
   }
 
@@ -127,19 +127,10 @@ export default class LoginScreen extends Component {
                             </TouchableHighlight>
                         </View>
                     </Modal>
+                </View>    
 
-                    <TouchableHighlight
-                        onPress={() => {
-                            this.setModalVisible(true);
-                        }}>
-                        <Text
-                            style={{fontSize: 14, color: 'red', padding: 5}}>
-                            {this.state.message}. Press to see reason.
-                        </Text>
-                    </TouchableHighlight>
-                </View>                                         
 			)}
-            {this.state.isLoggingIn && <ActivityIndicator />}
+            {this.state.isLoggingIn && <ActivityIndicator />} 
              
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                  <Button
@@ -147,11 +138,11 @@ export default class LoginScreen extends Component {
                    buttonStyle={styles.loginButton}
                    textStyle={{fontFamily: "cylburn", fontSize: 36 }}
                    onPress={() => {
-                        this._userLogin(this.state.username,this.state.password).then(result => {
-                            if(result) {
+                       this._userLogin(this.state.username,this.state.password).then(result => {
+                           if(result) {
                                 navigate('ProductsScreen', { name: 'products' });
-                            }
-                        })
+                           }
+                       })
                    }}
                    title="Login"
                 />
