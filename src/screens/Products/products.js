@@ -1,101 +1,112 @@
 import React, { Component } from "react";
 
-import styles from "./Products.Styles";
-import {Keyboard, Text, View, Image, TouchableWithoutFeedback, FlatList, KeyboardAvoidingView} from 'react-native';
-import { Button } from 'react-native-elements';
+import {FlatList} from 'react-native';
+import {ListItem } from 'react-native-elements';
+
+const PAGE_SIZE = 15;
 
 export default class Products extends Component {
-  static navigationOptions = ({navigation,screenProps}) =>({
-    title: 'Products',
-  });
-  constructor(props) {
-    super(props)
-    this.state = {
-      products: [
-        {
-          key: '1',
-          icon: '../../assets/images/icons8-product-80.png',
-          description: 'Description 1. Lorem ipsum dolor sit amet, ea vis natum debet nobis. Est at populo labore principes, quo no choro legere. Sed novum mazim dolor ad, te ullum sonet maluisset mel. Pri eu sanctus utroque euripidis, id novum denique  sit, congue cetero utamur qui eu. Cum agam eros maiorum id. Ut modus reque malis est, veri graeci ea usu. Lorem ipsum dolor sit amet, ea vis natum debet nobis. Est at populo labore principes, quo no choro legere. Sed novum mazim dolor ad, te ullum sonet maluisset mel. Pri eu sanctus utroque euripidis, id novum denique sit, congue cetero utamur qui eu. Cum agam eros maiorum id. Ut modus reque malis est, veri graeci ea usu.',
-          title: 'Product 1',
-        },
-        {
-          key: '2',
-          icon: '../../assets/images/icons8-product-80.png',
-          description: 'Description 2. Lorem ipsum dolor sit amet, ea vis natum debet nobis. Est at populo labore principes, quo no choro legere. Sed novum mazim dolor ad, te ullum sonet maluisset mel. Pri eu sanctus utroque euripidis, id novum denique  sit, congue cetero utamur qui eu. Cum agam eros maiorum id. Ut modus reque malis est, veri graeci ea usu. Lorem ipsum dolor sit amet, ea vis natum debet nobis. Est at populo labore principes, quo no choro legere. Sed novum mazim dolor ad, te ullum sonet maluisset mel. Pri eu sanctus utroque euripidis, id novum denique sit, congue cetero utamur qui eu. Cum agam eros maiorum id. Ut modus reque malis est, veri graeci ea usu.',
-          title: 'Product 2',
-        },
-        {
-          key: '3',
-          icon: '../../assets/images/icons8-product-80.png',
-          description: 'Description 3. Lorem ipsum dolor sit amet, ea vis natum debet nobis. Est at populo labore principes, quo no choro legere. Sed novum mazim dolor ad, te ullum sonet maluisset mel. Pri eu sanctus utroque euripidis, id novum denique  sit, congue cetero utamur qui eu. Cum agam eros maiorum id. Ut modus reque malis est, veri graeci ea usu. Lorem ipsum dolor sit amet, ea vis natum debet nobis. Est at populo labore principes, quo no choro legere. Sed novum mazim dolor ad, te ullum sonet maluisset mel. Pri eu sanctus utroque euripidis, id novum denique sit, congue cetero utamur qui eu. Cum agam eros maiorum id. Ut modus reque malis est, veri graeci ea usu.',
-          title: 'Product 3',
-        },
-        {
-          key: '4',
-          icon: '../../assets/images/icons8-product-80.png',
-          description: 'Description 4. Lorem ipsum dolor sit amet, ea vis natum debet nobis. Est at populo labore principes, quo no choro legere. Sed novum mazim dolor ad, te ullum sonet maluisset mel. Pri eu sanctus utroque euripidis, id novum denique  sit, congue cetero utamur qui eu. Cum agam eros maiorum id. Ut modus reque malis est, veri graeci ea usu. Lorem ipsum dolor sit amet, ea vis natum debet nobis. Est at populo labore principes, quo no choro legere. Sed novum mazim dolor ad, te ullum sonet maluisset mel. Pri eu sanctus utroque euripidis, id novum denique sit, congue cetero utamur qui eu. Cum agam eros maiorum id. Ut modus reque malis est, veri graeci ea usu.',
-          title: 'Product 4',
-        },
-        {
-          key: '5',
-          icon: '../../assets/images/icons8-product-80.png',
-          description: 'Description 5. Lorem ipsum dolor sit amet, ea vis natum debet nobis. Est at populo labore principes, quo no choro legere. Sed novum mazim dolor ad, te ullum sonet maluisset mel. Pri eu sanctus utroque euripidis, id novum denique  sit, congue cetero utamur qui eu. Cum agam eros maiorum id. Ut modus reque malis est, veri graeci ea usu. Lorem ipsum dolor sit amet, ea vis natum debet nobis. Est at populo labore principes, quo no choro legere. Sed novum mazim dolor ad, te ullum sonet maluisset mel. Pri eu sanctus utroque euripidis, id novum denique sit, congue cetero utamur qui eu. Cum agam eros maiorum id. Ut modus reque malis est, veri graeci ea usu.',
-          title: 'Product 5',
-        },
-        {
-          key: '6',
-          icon: '../../assets/images/icons8-product-80.png',
-          description: 'Description 6. Lorem ipsum dolor sit amet, ea vis natum debet nobis. Est at populo labore principes, quo no choro legere. Sed novum mazim dolor ad, te ullum sonet maluisset mel. Pri eu sanctus utroque euripidis, id novum denique  sit, congue cetero utamur qui eu. Cum agam eros maiorum id. Ut modus reque malis est, veri graeci ea usu. Lorem ipsum dolor sit amet, ea vis natum debet nobis. Est at populo labore principes, quo no choro legere. Sed novum mazim dolor ad, te ullum sonet maluisset mel. Pri eu sanctus utroque euripidis, id novum denique sit, congue cetero utamur qui eu. Cum agam eros maiorum id. Ut modus reque malis est, veri graeci ea usu.',
-          title: 'Product 6',
-        },
-        {
-          key: '7',
-          icon: '../../assets/images/icons8-product-80.png',
-          description: 'Description 7. Lorem ipsum dolor sit amet, ea vis natum debet nobis. Est at populo labore principes, quo no choro legere. Sed novum mazim dolor ad, te ullum sonet maluisset mel. Pri eu sanctus utroque euripidis, id novum denique  sit, congue cetero utamur qui eu. Cum agam eros maiorum id. Ut modus reque malis est, veri graeci ea usu. Lorem ipsum dolor sit amet, ea vis natum debet nobis. Est at populo labore principes, quo no choro legere. Sed novum mazim dolor ad, te ullum sonet maluisset mel. Pri eu sanctus utroque euripidis, id novum denique sit, congue cetero utamur qui eu. Cum agam eros maiorum id. Ut modus reque malis est, veri graeci ea usu.',
-          title: 'Product 7',
-        },
-        {
-          key: '8',
-          icon: '../../assets/images/icons8-product-80.png',
-          description: 'Description 8. Lorem ipsum dolor sit amet, ea vis natum debet nobis. Est at populo labore principes, quo no choro legere. Sed novum mazim dolor ad, te ullum sonet maluisset mel. Pri eu sanctus utroque euripidis, id novum denique  sit, congue cetero utamur qui eu. Cum agam eros maiorum id. Ut modus reque malis est, veri graeci ea usu. Lorem ipsum dolor sit amet, ea vis natum debet nobis. Est at populo labore principes, quo no choro legere. Sed novum mazim dolor ad, te ullum sonet maluisset mel. Pri eu sanctus utroque euripidis, id novum denique sit, congue cetero utamur qui eu. Cum agam eros maiorum id. Ut modus reque malis est, veri graeci ea usu.',
-          title: 'Product 8',
-        },
-      ]
+  state = {
+    pageIdx: 0,
+    items: [],
+    isLoading: false,
+    isRefreshing: false,
+    totalCount: 0,
+};
+
+handleRefresh = () => {
+    this.setState({
+        isRefreshing: true,
+        items: [],
+    }), () => {
+
+        this.loadProducts(0)
+            .then(() => this.setState({ isRefreshing: false }))
+            .catch((e) => {
+                this.setState({
+                    isRefreshing: false,
+                    items: [],
+                })
+        });
     }
-  }
-
-  render() {
-    const { navigate } = this.props.navigation;
-    return (
-      <KeyboardAvoidingView style={styles.listView} behavior="padding">
-
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <View>
-          <View>
-            <FlatList
-              data = {this.state.products}
-                 
-              renderItem={({item}) =>
-                  (
-                    <View style={{flexDirection: "row"}}>
-                      <Image
-                        style={styles.productImageProductsScreen}
-                        label="Product"
-                        source={require('../../assets/images/icons8-product-80.png')}
-                      />
-                      <Text style={styles.item}
-                      onPress={() =>
-                        navigate('ProductDetailsScreen', { productDescription: item.description,  productName: item.title, productImage: item.icon})
-                      }>{item.title}</Text>
-                    </View>
-                  )
-                }
-            />
-          </View>
-        </View>
-      </TouchableWithoutFeedback>
-      </KeyboardAvoidingView>
-    );
-  }
 }
 
+onScroll(isScrolling) {
+    this.setState({ isScrolling });
+}
+
+handleLoadMore = () => {
+    const { isScrolling, pageIdx, totalCount } = this.state;
+        const maxCount = (pageIdx - 1) * PAGE_SIZE;
+
+        if (isScrolling || maxCount >= totalCount) {
+            return;
+        }
+
+        this.loadProducts(pageIdx + 1).catch(e => console.error(e));
+};
+
+componentDidMount() {
+
+    this.loadProducts(this.state.pageIdx).catch(e => console.error(e));
+};
+
+loadProducts(pageIdx) {    
+    return this.fetchItems({ pageSize: PAGE_SIZE, pageIdx })
+        .then(({ items, totalCount }) => {
+            this.setState({
+                items: this.state.items.concat(items),
+                pageIdx,
+                totalCount,
+            });
+        });
+}
+
+async fetchItems(options) {
+    const { pageIdx, pageSize } = options;
+
+    const response = await fetch(`http://ecsc00a02fb3.epam.com/rest/V1/products?searchCriteria[pageSize]=${pageSize}&searchCriteria[currentPage]=${pageIdx + 1}`, {
+        method: 'GET',
+        mode: 'cors',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
+    const response_1 = await response.json();
+    if (response_1.message) {
+        return Promise.reject(response_1.message);
+    }
+    return {
+        items: response_1.items.map(item => Object.assign( item)),
+        totalCount: response_1.total_count,
+    };
+}
+
+render() {
+    const { items, isRefreshing } = this.state;
+    const { navigate } = this.props.navigation;
+    return (
+        <FlatList
+            renderItem={({item}) => (
+                <ListItem                            
+                    title={item.name}
+                    price={item.price}
+                    //avatar={{uri: item.picture.thumbnail}}
+                    //roundAvatar
+                    onPress={() =>
+                        navigate('ProductDetailsScreen', { productDescription: 'Lorem ipsum dolor sit amet, ea vis natum debet nobis. Est at populo labore principes, quo no choro legere. Sed novum mazim dolor ad, te ullum sonet maluisset mel. Pri eu sanctus utroque euripidis, id novum denique  sit, congue cetero utamur qui eu. Cum agam eros maiorum id. Ut modus reque malis est, veri graeci ea usu. Lorem ipsum dolor sit amet, ea vis natum debet nobis. Est at populo labore principes, quo no choro legere. Sed novum mazim dolor ad, te ullum sonet maluisset mel. Pri eu sanctus utroque euripidis, id novum denique sit, congue cetero utamur qui eu. Cum agam eros maiorum id. Ut modus reque malis est, veri graeci ea usu.',  productName: item.name, productImage: '../../assets/images/icons8-product-80.png'})                                
+                    }
+                />
+            )}
+            data={items}
+            keyExtractor={item => `${item.id}`}
+            refreshing={isRefreshing}
+            onRefresh={this.handleRefresh}
+            onEndReached={this.handleLoadMore}
+            onEndThreshold={0.01}
+            onMomentumScrollBegin={() => this.onScroll(true)}
+            onMomentumScrollEnd={() => this.onScroll(false)}
+        />
+    )
+}
+}

@@ -26,7 +26,9 @@ export default class ProductDetailsScreen extends Component {
                         />
                   </View>
                   <View style={ styles.captionTextContainer }>
-                    <Text style={styles.captionText}>{productName}</Text>
+                    <Text style={styles.captionText} numberOfLines={1} ellipsizeMode='tail'>
+                      {productName}
+                    </Text>
                   </View>
                   <View style={ styles.mapImageContainer }>
                     <TouchableWithoutFeedback 
