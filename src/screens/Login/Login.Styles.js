@@ -52,17 +52,17 @@ const styles = StyleSheet.create({
         flex: 13
     },
     modalContainer: {
-        flex: 1,
-        padding: 20,      
+        padding: 20,     
+        backgroundColor: "white",
+        borderRadius: 10,
+        borderColor: 'rgba(0, 0, 0, 0.1)',
     },
-    modalButtonContainer: {
-        flex: 2,
-        alignItems: 'flex-end'
-    },
-    modalButtonText: {
+    modalButton: {
+        alignSelf: 'center',
+        marginTop: 10,
         marginHorizontal: '5%',
         backgroundColor: Colors.EpamBlue,
-        borderRadius: 5,      
+        borderRadius: 10,      
     },
 });
 

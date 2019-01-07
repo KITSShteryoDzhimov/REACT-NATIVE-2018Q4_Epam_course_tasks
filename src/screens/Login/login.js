@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 
 import styles from "./Login.Styles";
-import {Keyboard, Text, View, TextInput, Image, TouchableWithoutFeedback, TouchableHighlight, ActivityIndicator, Modal, Alert} from 'react-native';
+import {Keyboard, Text, View, TextInput, Image, TouchableWithoutFeedback, TouchableHighlight, ActivityIndicator, Alert} from 'react-native';
 import { Button } from 'react-native-elements';
 import { Font } from 'expo';
+import Modal from 'react-native-modal';
 
 export default class LoginScreen extends Component {
  state = {
@@ -103,22 +104,23 @@ export default class LoginScreen extends Component {
 
                 <View style={styles.containerView}>
                     <Modal
-                    animationType="slide"
-                    transparent={false}
-                    visible={this.state.modalVisible}
-                    onRequestClose={() => {
-                        Alert.alert('Modal will be closed.');
-                    }}>
+                        animationIn={'slideInLeft'}
+                        animationOut={'slideOutRight'}
+                        transparent={false}
+                        isVisible={this.state.modalVisible}
+                        onRequestClose={() => {
+                            Alert.alert('Modal will be closed.');
+                        }}
+                    >
                         <View style={styles.modalContainer}>
                             <Text style={fontSize=30}>Welcome, {this.state.username}!</Text>
-                            <Text style={fontSize=30}>There is network issue in the moment!</Text> 
-                            <Text style={fontSize=30}>Please try again later.</Text>
-                        </View>                               
-                        <View style={styles.modalButtonContainer}>
+                            <Text style={fontSize=30}>There is some issue in the moment!</Text> 
+                            <Text style={fontSize=30}>Please verify your credentials and try again later.</Text>
+
                             <TouchableHighlight>
                                 <Button
                                     disabled={this.state.isLoggingIn||!this.state.username||!this.state.password}
-                                    buttonStyle={styles.modalButtonText}
+                                    buttonStyle={styles.modalButton}
                                     onPress={() => {
                                         this.setModalVisible(!this.state.modalVisible);
                                     }}
