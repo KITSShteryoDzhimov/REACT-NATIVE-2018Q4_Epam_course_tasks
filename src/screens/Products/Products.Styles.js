@@ -25,6 +25,11 @@ const styles = StyleSheet.create({
         fontFamily: "cylburn",
         fontSize: 32,
     },
+    button: {
+        marginHorizontal: '5%',
+        backgroundColor: Colors.EpamBlue,
+        borderRadius: 5,
+    }    
 });
 
 export default styles;

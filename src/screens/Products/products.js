@@ -1,112 +1,80 @@
 import React, { Component } from "react";
 
-import {FlatList} from 'react-native';
-import {ListItem } from 'react-native-elements';
+import styles from "./Products.Styles";
+import { Text, View, TouchableOpacity} from 'react-native';
+import { Card, Button } from 'react-native-elements';
+import AnimatedCard from "../CardSwipe/AnimatedCard";
 
-const PAGE_SIZE = 15;
+const DATA = [
+  { id: 1, text: 'Product 1', uri: 'https://i.pinimg.com/236x/07/59/5a/07595a38a530589a6cdbb54a805564d6.jpg' },
+  { id: 2, text: 'Product 2', uri: 'http://www.fluxdigital.co/wp-content/uploads/2015/04/Unsplash.jpg' },
+  { id: 3, text: 'Product 3', uri: 'http://imgs.abduzeedo.com/files/paul0v2/unsplash/unsplash-09.jpg' },
+  { id: 4, text: 'Product 4', uri: 'http://imgs.abduzeedo.com/files/paul0v2/unsplash/unsplash-01.jpg' },
+  { id: 5, text: 'Product 5', uri: 'http://imgs.abduzeedo.com/files/paul0v2/unsplash/unsplash-04.jpg' },
+  { id: 6, text: 'Product 6', uri: 'http://www.fluxdigital.co/wp-content/uploads/2015/04/Unsplash.jpg' },
+  { id: 7, text: 'Product 7', uri: 'http://imgs.abduzeedo.com/files/paul0v2/unsplash/unsplash-09.jpg' },
+  { id: 8, text: 'Product 8', uri: 'http://imgs.abduzeedo.com/files/paul0v2/unsplash/unsplash-01.jpg' },
+];
+
 
 export default class Products extends Component {
-  state = {
-    pageIdx: 0,
-    items: [],
-    isLoading: false,
-    isRefreshing: false,
-    totalCount: 0,
-};
+  static navigationOptions = ({navigation}) =>({
+    title: 'Products',
+  });
 
-handleRefresh = () => {
-    this.setState({
-        isRefreshing: true,
-        items: [],
-    }), () => {
+    renderCard(item) {
+      //const { navigate } = this.props.navigation;
 
-        this.loadProducts(0)
-            .then(() => this.setState({ isRefreshing: false }))
-            .catch((e) => {
-                this.setState({
-                    isRefreshing: false,
-                    items: [],
-                })
-        });
+      return (
+        
+        <Card
+          key={item.id}
+          title={item.text}
+          image={{ uri: item.uri }}
+        >
+        
+          <TouchableOpacity>
+            <Button
+              buttonStyle={styles.button}
+              textStyle={{fontFamily: "cylburn", fontSize: 36 }}                      
+              // onPress={() =>
+                //navigate('LoginScreen', {  productDescription: "Lorem Ipsum ...", productName: item.text, productImage: item.uri})
+              // }
+              title="Product Details"
+            />
+          </TouchableOpacity>  
+          <Text style={{ margin: 15 }}>
+            Note: Swipe the Card left or right to see next product
+          </Text>                  
+        </Card>
+       
+      );
     }
-}
-
-onScroll(isScrolling) {
-    this.setState({ isScrolling });
-}
-
-handleLoadMore = () => {
-    const { isScrolling, pageIdx, totalCount } = this.state;
-        const maxCount = (pageIdx - 1) * PAGE_SIZE;
-
-        if (isScrolling || maxCount >= totalCount) {
-            return;
-        }
-
-        this.loadProducts(pageIdx + 1).catch(e => console.error(e));
-};
-
-componentDidMount() {
-
-    this.loadProducts(this.state.pageIdx).catch(e => console.error(e));
-};
-
-loadProducts(pageIdx) {    
-    return this.fetchItems({ pageSize: PAGE_SIZE, pageIdx })
-        .then(({ items, totalCount }) => {
-            this.setState({
-                items: this.state.items.concat(items),
-                pageIdx,
-                totalCount,
-            });
-        });
-}
-
-async fetchItems(options) {
-    const { pageIdx, pageSize } = options;
-
-    const response = await fetch(`http://ecsc00a02fb3.epam.com/rest/V1/products?searchCriteria[pageSize]=${pageSize}&searchCriteria[currentPage]=${pageIdx + 1}`, {
-        method: 'GET',
-        mode: 'cors',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-    });
-    const response_1 = await response.json();
-    if (response_1.message) {
-        return Promise.reject(response_1.message);
+  
+    renderNoMoreCards() {
+      return (
+        <Card title="All Done!">
+          <Text style={{ marginBottom: 10 }}>
+            There's no more content here!
+            Go back to start over.
+          </Text>
+        </Card>
+      );
     }
-    return {
-        items: response_1.items.map(item => Object.assign( item)),
-        totalCount: response_1.total_count,
-    };
-}
 
-render() {
-    const { items, isRefreshing } = this.state;
-    const { navigate } = this.props.navigation;
+  render() {   
+    
     return (
-        <FlatList
-            renderItem={({item}) => (
-                <ListItem                            
-                    title={item.name}
-                    price={item.price}
-                    //avatar={{uri: item.picture.thumbnail}}
-                    //roundAvatar
-                    onPress={() =>
-                        navigate('ProductDetailsScreen', { productDescription: 'Lorem ipsum dolor sit amet, ea vis natum debet nobis. Est at populo labore principes, quo no choro legere. Sed novum mazim dolor ad, te ullum sonet maluisset mel. Pri eu sanctus utroque euripidis, id novum denique  sit, congue cetero utamur qui eu. Cum agam eros maiorum id. Ut modus reque malis est, veri graeci ea usu. Lorem ipsum dolor sit amet, ea vis natum debet nobis. Est at populo labore principes, quo no choro legere. Sed novum mazim dolor ad, te ullum sonet maluisset mel. Pri eu sanctus utroque euripidis, id novum denique sit, congue cetero utamur qui eu. Cum agam eros maiorum id. Ut modus reque malis est, veri graeci ea usu.',  productName: item.name, productImage: '../../assets/images/icons8-product-80.png'})                                
-                    }
-                />
-            )}
-            data={items}
-            keyExtractor={item => `${item.id}`}
-            refreshing={isRefreshing}
-            onRefresh={this.handleRefresh}
-            onEndReached={this.handleLoadMore}
-            onEndThreshold={0.01}
-            onMomentumScrollBegin={() => this.onScroll(true)}
-            onMomentumScrollEnd={() => this.onScroll(false)}
-        />
-    )
+
+        <View>
+          <AnimatedCard button
+            data={DATA}
+            renderCard={this.renderCard}
+            renderNoMoreCards={this.renderNoMoreCards}
+          />
+        </View>
+      
+    );
+  }
 }
-}
+
