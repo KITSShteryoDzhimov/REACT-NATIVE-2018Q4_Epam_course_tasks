@@ -4,6 +4,7 @@ import styles from "./Login.Styles";
 import {Keyboard, Text, View, TextInput, Image, TouchableWithoutFeedback, TouchableHighlight, ActivityIndicator, Modal, Alert} from 'react-native';
 import { Button } from 'react-native-elements';
 import { Font } from 'expo';
+import OfflineNotice from '../../components/OfflineNotice'
 
 export default class LoginScreen extends Component {
  state = {
@@ -149,9 +150,8 @@ export default class LoginScreen extends Component {
             </TouchableWithoutFeedback>
           </View>
           <View style={ styles.footer } />
-       </View>
+          <OfflineNotice />
+       </View>   
     ) : null;
   }
 }
-
-
