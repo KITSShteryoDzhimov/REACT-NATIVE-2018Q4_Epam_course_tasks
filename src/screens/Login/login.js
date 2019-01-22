@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import styles from "./Login.Styles";
-import {Keyboard, Text, View, TextInput, Image, TouchableWithoutFeedback, TouchableHighlight, ActivityIndicator, Modal, Alert} from 'react-native';
+import {Keyboard, Text, View, TextInput, Image, TouchableWithoutFeedback, TouchableHighlight, ActivityIndicator, Modal, Alert, AsyncStorage} from 'react-native';
 import { Button } from 'react-native-elements';
 import { Font } from 'expo';
 import OfflineNotice from '../../components/OfflineNotice'
@@ -47,8 +47,15 @@ export default class LoginScreen extends Component {
                     },
                     body: JSON.stringify({username, password})	//formBody
                 });
+
           if(result.status == 200) {
+             resultJson = await result.json();
              this.setState({ isLoggingIn: false })
+             AsyncStorage.setItem('jwt', resultJson.token)
+             AsyncStorage.getItem
+             alert(`Success! You may now access protected content.`)
+             // Redirect to home screen
+             this.props.navigator.pop()
              return true;
            }
            const error = await result.json();
