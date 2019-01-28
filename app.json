@@ -1,7 +1,9 @@
 {
   "expo": {
     "android": {
-      "package": "com.epam.fridayshop"
+      "package": "com.epam.fridayshop",
+      "publishBundlePath": "android\\app\\src\\main\\assets\\shell-app.bundle",
+      "publishManifestPath": "android\\app\\src\\main\\assets\\shell-app-manifest.json"
     },
     "ios": {
       "bundleIdentifier": "com.epam.fridayshop",
@@ -16,7 +18,7 @@
       "ios",
       "android"
     ],
-    "version": "0.0.2",
+    "version": "0.0.3",
     "orientation": "portrait",
     "icon": "./src/assets/images/icon.png",
     "splash": {
@@ -30,6 +32,11 @@
     "assetBundlePatterns": [
       "**/*"
     ],
-    "githubUrl": "https://github.com/KITSShteryoDzhimov/REACT-NATIVE-2018Q4_Epam_course_tasks/"
+    "githubUrl": "https://github.com/KITSShteryoDzhimov/REACT-NATIVE-2018Q4_Epam_course_tasks/",
+    "isDetached": true,
+    "detach": {
+      "androidExpoViewUrl": "https://s3.amazonaws.com/exp-exponent-view-code/android-v2.9.2-sdk31.0.0-d1776f37-d524-4fee-872d-6807b0fd83ff.tar.gz"
+    },
+    "scheme": "exp013d73a3b3834ff98ff7217145f31e66"
   }
 }

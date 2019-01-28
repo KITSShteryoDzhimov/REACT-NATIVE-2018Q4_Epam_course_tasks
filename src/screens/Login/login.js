@@ -5,6 +5,7 @@ import {Keyboard, Text, View, TextInput, Image, TouchableWithoutFeedback, Toucha
 import { Button } from 'react-native-elements';
 import { Font } from 'expo';
 import OfflineNotice from '../../components/OfflineNotice'
+import SplashScreen from 'react-native-splash-screen'
 
 export default class LoginScreen extends Component {
  state = {
@@ -21,6 +22,12 @@ export default class LoginScreen extends Component {
     this.setState({modalVisible: visible});
   }
 
+  componentDidMount() {
+    // do stuff while splash screen is shown
+    // After having done stuff (such as async tasks) hide the splash screen
+    SplashScreen.hide();
+  }
+  
   async componentWillMount()   {
         await Font.loadAsync({
           'cylburn': require('../../assets/fonts/Cylburn.ttf'),
