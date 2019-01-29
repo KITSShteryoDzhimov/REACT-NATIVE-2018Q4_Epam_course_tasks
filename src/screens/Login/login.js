@@ -6,6 +6,7 @@ import { Button } from 'react-native-elements';
 import { Font } from 'expo';
 import OfflineNotice from '../../components/OfflineNotice'
 import SplashScreen from 'react-native-splash-screen'
+import DeviceInfo from 'react-native-device-info'
 
 export default class LoginScreen extends Component {
  state = {
@@ -82,6 +83,24 @@ export default class LoginScreen extends Component {
       this._password.setNativeProps({ text: '' });
       this.setState({ message: '' });
   }
+
+  checkSystemVersion = () => {
+    var systemName = DeviceInfo.getSystemName()
+    if(systemName === 'Android'){
+        Alert.alert('Glad you are using our app for', systemName,
+        [
+            {text: 'Ок'},
+        ])
+    }
+    else {
+        //Alert.alert('This app for your version is in progress ')
+        Alert.alert('We are not supporting our app for your system', systemName,
+        [
+            {text: 'Ок'},
+        ])
+    }     
+  }
+  
   render() {
     const { navigate } = this.props.navigation;
     return this.state.fontsLoaded ?
@@ -165,6 +184,7 @@ export default class LoginScreen extends Component {
           </View>
           <View style={ styles.footer } />
           <OfflineNotice />
+          {this.checkSystemVersion()} 
        </View>   
     ) : null;
   }
