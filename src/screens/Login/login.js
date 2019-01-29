@@ -7,6 +7,7 @@ import { Font } from 'expo';
 import OfflineNotice from '../../components/OfflineNotice'
 import SplashScreen from 'react-native-splash-screen'
 import DeviceInfo from 'react-native-device-info'
+import LottieView from 'lottie-react-native';
 
 export default class LoginScreen extends Component {
  state = {
@@ -107,10 +108,9 @@ export default class LoginScreen extends Component {
     (
        <View style={styles.containerView}>
          <View style={ styles.header } />
-         <Image
-           style={styles.welcomeImage}
-           label="Products Catalog Smile"
-           source={{uri: 'https://i.pinimg.com/originals/af/d8/cc/afd8cc206a772cde7e79eaaaa4596948.png'}}
+         <LottieView
+            source={require('../../assets/animations/746-shopping-cart.json')}
+            autoPlay            
          />
          <View style={styles.appNameContainer}>
              <Text style={styles.appWelcomeText}>Friday's shop</Text>
