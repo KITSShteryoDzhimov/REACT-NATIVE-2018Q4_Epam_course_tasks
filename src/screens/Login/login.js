@@ -4,6 +4,7 @@ import styles from "./Login.Styles";
 import {Keyboard, Text, View, TextInput, Image, TouchableWithoutFeedback, TouchableHighlight, ActivityIndicator, Modal, Alert} from 'react-native';
 import { Button } from 'react-native-elements';
 import { Font } from 'expo';
+import KeyboardAnimated from '../../components/KeyboardAnimated'
 
 export default class LoginScreen extends Component {
  state = {
@@ -71,6 +72,8 @@ export default class LoginScreen extends Component {
     const { navigate } = this.props.navigation;
     return this.state.fontsLoaded ?
     (
+    <KeyboardAnimated>
+    {() => (  
        <View style={styles.containerView}>
          <View style={ styles.header } />
          <Image
@@ -150,6 +153,8 @@ export default class LoginScreen extends Component {
           </View>
           <View style={ styles.footer } />
        </View>
+       )}
+    </KeyboardAnimated>
     ) : null;
   }
 }
