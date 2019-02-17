@@ -5,7 +5,17 @@ import {Keyboard, Text, View, TextInput, Image, TouchableWithoutFeedback, Toucha
 import { Button } from 'react-native-elements';
 import { Font } from 'expo';
 import KeyboardAnimated from '../../components/KeyboardAnimated'
-
+import Sentry from 'sentry-expo';
+Sentry.setUserContext({
+    username: 'test',
+})
+Sentry.captureBreadcrumb({
+    message: 'test',
+    category: "testCategory",
+    data: {
+        username: 'test'
+    }
+})
 export default class LoginScreen extends Component {
  state = {
     currentIndex: 0,

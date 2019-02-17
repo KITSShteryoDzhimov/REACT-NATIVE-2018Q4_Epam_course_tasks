@@ -30,6 +30,18 @@
     "assetBundlePatterns": [
       "**/*"
     ],
-    "githubUrl": "https://github.com/KITSShteryoDzhimov/REACT-NATIVE-2018Q4_Epam_course_tasks/"
+    "githubUrl": "https://github.com/KITSShteryoDzhimov/REACT-NATIVE-2018Q4_Epam_course_tasks/",
+    "hooks": {
+      "postPublish": [
+        {
+          "file": "sentry-expo/upload-sourcemaps",
+          "config": {
+            "organization": "Epam",
+            "project": "fridaysshop",
+            "authToken": "28f04d107def4b079e81cf8005fb7f9849deebab74f2406db82caaa467483b7e"
+          }
+        }
+      ]
+    }
   }
 }
